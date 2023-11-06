@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hero-pattern {
+    background-image: url(/src/imgs/computadora.jpg)
+}
