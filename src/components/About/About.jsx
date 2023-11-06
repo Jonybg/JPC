@@ -4,7 +4,7 @@ import "./about.css"
 
 export const About = () => {
     return (
-        <div className="flex items-start xl:justify-evenly justify-center  h-[35rem] ">
+        <div className="flex items-start xl:justify-evenly justify-center mt-20 h-[35rem] ">
             <div className=" max-w-xl flex  flex-col  gap-10">
                 <h2 className=" text-center text-5xl text-white" > Sobre Nosotros</h2>
                 <p className=" text-center text-xl text-white">Somos una empresa especializada en reparación de computadoras ubicada en Lomas de Zamora, B. Nuestro equipo de expertos altamente capacitados está comprometido en brindar soluciones rápidas y confiables para todos los problemas informáticos.</p>
