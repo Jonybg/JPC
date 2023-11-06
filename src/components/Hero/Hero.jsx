@@ -3,7 +3,7 @@ export const Hero = () => {
     return (
         <section className="h-screen">
             <div className="hero-pattern bg-cover bg-blend-multiply bg-stone-600 bg-opacity-90 h-full  ">
-                <div className="flex justify-start mx-16  " >
+                <div className="flex justify-center xl:justify-start mx-16  " >
                     <div className="flex flex-col text-center my-56 items-center gap-6" >
                         <h1 className="text-white text-5xl ">Repara tu computadora ahora en <span>JPC</span></h1>
                         <p className="text-white text-3xl " >Expertos en reparacion de computadoras en Lomas de Zamora.</p>
