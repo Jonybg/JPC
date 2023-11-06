@@ -1,12 +1,16 @@
 import React from "react";
 
-export const ProductCard = ({ img, title, desc }) => {
+export const ProductCard = ({ img, title, price }) => {
     return (
-        <div className="relative m-11 " >
-            <img className=" w-96 h-3/4 rounded-xl  " src={img} />
-            <div className="flex gap-11 flex-col max-w-xl absolute top-[260px] left-0 rounded-xl  p-4 text-white text-center bg-slate-900 opacity-75 ">
+        <div className=" max-w-sm m-11 border-2 bg-slate-500 flex flex-col justify-center items-center gap-3" >
+            <img className=" mt-3 w-48 rounded-xl h-[200px] " src={img} />
+            <div className="flex gap-5 flex-col rounded-xl  p-4 text-white text-center ">
                 <h3 className="  text-4xl font-bold" >{title}</h3>
-                <p className="text-2xl  font-bold " >{desc}</p>
+                <p className="text-2xl  font-bold " >{price}</p>
+                <div>
+                    <button className="bg-white py-3  w-32  rounded-xl text-black" >Añadir Al carrito</button>
+                </div>
+
             </div>
 
         </div>
