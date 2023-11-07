@@ -9,8 +9,8 @@ export const Contact = () => {
                 <input type="text" name="nombre" className=" sm:w-3/4 w-full p-3 mb-5 text-md" /> <br />
                 <label htmlFor="email" className="text-white text-xl mb-5">Email:</label>
                 <input type="email" name="email" className="sm:w-3/4 w-full p-3 mb-5 text-md" />
-                <label className="text-white text-xl mb-5" htmlFor="">Observaciones:</label>
-                <textarea name="" id="" cols="15" rows="2" className="w-full py-5 mb-10 text-md" ></textarea>
+                <label className="text-white text-xl mb-5 mt-10" htmlFor="">Observaciones:</label>
+                <textarea name="" id="" cols="15" rows="2" className="w-full py-5 mb-10 text-md " ></textarea>
                 <input type="submit" className=" cursor-pointer bg-green-500 py-3 px-10 rounded-xl" />
             </form>
 

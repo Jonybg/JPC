@@ -4,8 +4,9 @@ import { ProductsData } from "../../../data/ProductsData/Productsdata";
 
 export const ProductsWidget = () => {
     return (
-        <>
-            <h2 className=" text-center text-white text-6xl my-1 mt-5 ">Nuestros Servicios</h2>
+
+        <div className=" xl:mt-40 mt-30">
+            <h2 className=" text-center text-white text-6xl my-1 ">Nuestros Servicios</h2>
             <div className=" flex justify-center h-full  " >
 
 
@@ -23,7 +24,11 @@ export const ProductsWidget = () => {
 
 
             </div>
-        </>
+
+
+        </div>
+
+
 
     )
 }
