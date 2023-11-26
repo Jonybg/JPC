@@ -6,9 +6,7 @@ import "./index.css"
 export const App = () => {
     return (
         <HamburguesaMenu>
-            <div className="bg-slate-700" >
-                <AppRoutes />
-            </div>
+            <AppRoutes />
         </HamburguesaMenu>
 
     )
