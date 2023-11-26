@@ -1,7 +1,7 @@
 import React from "react";
 export const Hero = () => {
     return (
-        <section className="xl:h-screen  mb-32 h-1/4 ">
+        <section className="xl:h-screen  mb-auto  h-1/4 ">
             <div className="hero-pattern bg-cover bg-blend-multiply bg-stone-600 bg-opacity-90 xl:h-full h-3/4  ">
                 <div className="flex justify-center xl:justify-start mx-16  " >
                     <div className="flex flex-col text-center my-56 items-center gap-6" >
