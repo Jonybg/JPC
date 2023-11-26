@@ -5,3 +5,7 @@
 .hero-pattern {
     background-image: url(/src/imgs/computadora.jpg)
 }
+
+body {
+    background-color: rgb(51 65 85);
+}

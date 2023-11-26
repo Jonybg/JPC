@@ -10,7 +10,7 @@ export const ProductsWidget = () => {
             <div className=" flex justify-center h-full  " >
 
 
-                <div className="flex flex-col justify-center my-16 2xl:flex-row" >{ProductsData.map((product) => {
+                <div className="flex flex-col justify-center my-16 2xl:flex-row " >{ProductsData.map((product) => {
                     return (
 
 
@@ -24,6 +24,7 @@ export const ProductsWidget = () => {
 
 
             </div>
+
 
 
         </div>

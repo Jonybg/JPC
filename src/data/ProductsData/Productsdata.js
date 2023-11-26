@@ -17,6 +17,7 @@ export const ProductsData = [
         title: "Soporte técnico remoto",
         price: "$1500",
         img: "https://images.unsplash.com/photo-1562758778-9f5ba22c8bae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wyNjI5NjF8MHwxfHNlYXJjaHwyMnx8Q29tcHV0ZXIlMjBSZXBhaXJ8ZW58MHx8fHwxNjk4NzkwOTYzfDA&ixlib=rb-4.0.3&q=80&w=1080"
-    }
+    },
+
 
 ];

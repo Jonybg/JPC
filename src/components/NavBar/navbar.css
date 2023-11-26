@@ -1,7 +1,22 @@
-@media (max-width: 992px) {
-
-    .noimage {
+@media (max-width: 1280px) {
+    .nav-list {
+        display: flex;
+        position: absolute;
+        top: 87px;
+        left: 5%;
+        right: 5%;
+        width: 80%;
+        flex-direction: column;
+        background-color: rgb(51 65 85);
+        border: 2px solid white;
+        border-top: 0;
+        border-radius: 0 0 15px 15px;
+        align-items: flex-start;
+        padding: 45px 30px;
+        gap: 25px;
+        z-index: 2;
         display: none;
+
     }
 
 }

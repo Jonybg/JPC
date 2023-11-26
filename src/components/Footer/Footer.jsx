@@ -1,7 +1,7 @@
 import React from "react";
 export const Footer = () => {
     return (
-        <footer className=" bg-slate-600 mt-28 ">
+        <footer className=" bg-slate-600 fixed bottom-0 w-full">
             <div className=" m-3 flex flex-col sm:flex-row items-center justify-center sm:gap-10 gap-2 text-white text-md">
                 <a href="#">Soporte</a>
                 <a href="#">Terminos de uso</a>
