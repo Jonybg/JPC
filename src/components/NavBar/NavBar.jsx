@@ -21,7 +21,7 @@ export const Navbar = () => {
           <li><NavLink style={({ isActive }) => ({ color: isActive ? "green" : "white" })} to="/">Home</NavLink></li>
           <li><NavLink style={({ isActive }) => ({ color: isActive ? "green" : "white" })} to="products">Products</NavLink></li>
           <li><NavLink style={({ isActive }) => ({ color: isActive ? "green" : "white" })} to="about">About us</NavLink></li>
-          <li><NavLink to="contact" style={({ isActive }) => ({ color: isActive ? "green" : "white" })} >contact</NavLink></li>
+          <li><NavLink style={({ isActive }) => ({ color: isActive ? "green" : "white" })} to="contact" >contact</NavLink></li>
 
         </ul>
         <IoMenu onClick={toggleMenu} className=" xl:hidden flex w-12 h-80 text-white mr-5 cursor-pointer  " ></IoMenu>

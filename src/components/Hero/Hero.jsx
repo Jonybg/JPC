@@ -1,5 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router";
+
 export const Hero = () => {
+    const navigate = useNavigate()
     return (
         <section className="xl:h-screen  mb-auto  h-1/4 ">
             <div className="hero-pattern bg-cover bg-blend-multiply bg-stone-600 bg-opacity-90 xl:h-full h-3/4  ">
@@ -9,7 +12,7 @@ export const Hero = () => {
                         <p className="text-white text-3xl " >Expertos en reparacion de computadoras en Lomas de Zamora.</p>
                         <p className="text-white text-3xl " >servicio rapido y confiable</p>
 
-                        <button className="bg-white px-10 py-4  rounded-lg" >Contactar</button>
+                        <button onClick={() => navigate("contact")} className="bg-white px-10 py-4  rounded-lg" >Contactar</button>
                     </div>
 
 
