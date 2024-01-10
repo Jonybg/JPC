@@ -1,5 +1,5 @@
 import React from "react";
-import { Categories } from "../CategtoriesDiv/Categories";
+import { Categories } from "../CategtoriesDiv/Categories.jsx";
 import { useSelector } from "react-redux";
 
 export const CategorieWidget = () => {
