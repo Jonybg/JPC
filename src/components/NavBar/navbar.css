@@ -1,3 +1,19 @@
+.cart {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    width: 500px;
+    right: 0;
+    top: 128px;
+    flex-direction: column;
+    background-color: rgb(51 65 85);
+    border-left: 2px solid white;
+    padding: 45px 30px;
+    gap: 25px;
+    z-index: 2;
+
+}
+
 @media (max-width: 1280px) {
     .nav-list {
         display: flex;
@@ -15,8 +31,10 @@
         padding: 45px 30px;
         gap: 25px;
         z-index: 2;
-        display: none;
+
 
     }
+
+
 
 }
