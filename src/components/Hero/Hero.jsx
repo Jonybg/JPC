@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { ProductsWidget } from "../Products/ProductWidget/ProductsWidget";
+import chica from "../../imgs/chica.jpg"
 
 export const Hero = () => {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ export const Hero = () => {
                             <p className="text-white text-3xl">Servicio rápido y confiable.</p>
                             <p className="text-white">En JPC, ofrecemos soluciones integrales para todos tus problemas informáticos.</p>
                             <p className="text-white italic">
-                                <img src="src/imgs/pexels-andrea-piacquadio-774909.jpg" alt="Cliente Satisfecho" className="w-40 h-40 rounded-full mx-auto  " />
+                                <img src={chica} className="w-40 h-40 rounded-full mx-auto  " />
                                 "¡Rápido, confiable y profesional! JPC salvó mi computadora." - Cliente satisfecho
                             </p>
                             <button onClick={() => navigate("contact")} className="bg-green-500 hover:bg-green-700 text-white font-bold px-10 py-4 rounded-full mt-8">Contactate con nosotros!</button>
