@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Categories } from "../CategtoriesDiv/Categories.jsx";
 import { Products } from "../../../data/Products.js";
+import pc from "../../../imgs/pc.jpg"
 
 export const CategorieWidget = () => {
     const categories = useSelector((state) => state.categories.categories);
@@ -12,7 +13,7 @@ export const CategorieWidget = () => {
         {
             id: "all",
             title: "Todas",
-            img: "src/imgs/pc.jpg",
+            img: pc,
         },
         ...categories,
     ];
