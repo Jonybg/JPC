@@ -15,10 +15,10 @@ export const Hero = () => {
                             <p className="text-white text-3xl">Expertos en reparación de computadoras en Lomas de Zamora.</p>
                             <p className="text-white text-3xl">Servicio rápido y confiable.</p>
                             <p className="text-white">En JPC, ofrecemos soluciones integrales para todos tus problemas informáticos.</p>
-                            <blockquote className="text-white italic">
+                            <p className="text-white italic">
                                 <img src="src/imgs/pexels-andrea-piacquadio-774909.jpg" alt="Cliente Satisfecho" className="w-40 h-40 rounded-full mx-auto  " />
                                 "¡Rápido, confiable y profesional! JPC salvó mi computadora." - Cliente satisfecho
-                            </blockquote>
+                            </p>
                             <button onClick={() => navigate("contact")} className="bg-green-500 hover:bg-green-700 text-white font-bold px-10 py-4 rounded-full mt-8">Contactate con nosotros!</button>
                         </div>
                     </div>
