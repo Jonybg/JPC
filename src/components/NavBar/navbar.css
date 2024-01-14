@@ -1,7 +1,6 @@
 .cart {
-
     display: flex;
-    position: fixed;
+    position: absolute;
     align-items: center;
     max-height: 100%;
     max-width: 100%;
