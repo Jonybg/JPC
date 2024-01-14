@@ -1,3 +1,4 @@
+import { unstable_renderSubtreeIntoContainer } from "react-dom"
 export const addItemTocart = (cartItems, product) => {
     const productInCart = cartItems.find((item) => item.id === product.id)
 

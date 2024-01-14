@@ -1,7 +1,9 @@
 .cart {
+
     display: flex;
     position: fixed;
     align-items: center;
+    height: 100vh;
     width: 501px;
     right: 0;
     top: 128px;
