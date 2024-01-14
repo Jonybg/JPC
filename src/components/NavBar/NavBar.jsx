@@ -88,7 +88,7 @@ export const Navbar = ({ quantity, id }) => {
         </div>
 
         <div>
-          <div className={`${cart ? "flex" : "hidden"} cart overflow-y-scroll max-h-[850px]`}>
+          <div className={`${cart ? "flex" : "hidden"} cart `}>
             <h2 className="text-white">Tus productos</h2>
             <div className="flex flex-col gap-8">
               {cartItems.map((item) => (
