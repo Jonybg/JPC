@@ -1,23 +1,28 @@
+
+
 export const Categories = [
+    {
+        id: 0,
+        title: "Todas",
+        category: "Todas",
+        img: "https://img.freepik.com/fotos-premium/ordenador-portatil-blanco-excepcional_40193-197.jpg?w=826"
+    },
     {
         id: 1,
         title: "Reparacion",
         category: "Reparacion",
-        img: "https://img.freepik.com/vector-gratis/ilustracion-concepto-abstracto-mantenimiento-sitio-web_335657-3689.jpg?w=826&t=st=1701879550~exp=1701880150~hmac=22b4bc3b36b909d85d3086a885c04b4cf439121c06052b5723bc89513e2bdf3a"
+        img: "https://img.freepik.com/vector-gratis/ilustracion-concepto-abstracto-mantenimiento-sitio-web_335657-3689.jpg?w=826&t=st=1701879550~exp=1701880150~hmac=22b4bc3b36b909d85d3086a885c04b4cf439121c06052b5723bc89513e2bdf3a",
     },
     {
         id: 2,
         title: "Malwares",
         category: "Malwares",
-        img: "https://img.freepik.com/vector-gratis/error-cibernetico-escudo_78370-3589.jpg?w=826&t=st=1701879321~exp=1701879921~hmac=f15cbc6387e9596e3893c13422cb98106982b48c1a1da896f3d76bce467a3645"
+        img: "https://img.freepik.com/vector-gratis/error-cibernetico-escudo_78370-3589.jpg?w=826&t=st=1701879321~exp=1701879921~hmac=f15cbc6387e9596e3893c13422cb98106982b48c1a1da896f3d76bce467a3645",
     },
     {
         id: 3,
         title: "Soporte",
         category: "Soporte",
-        img: "https://img.freepik.com/vector-premium/hombre-atencion-al-cliente-respondiendo-preguntas-sobre-ilustracion-vector-negocio_577008-23.jpg?w=826"
-    }
-
-
-
-]
+        img: "https://img.freepik.com/vector-premium/hombre-atencion-al-cliente-respondiendo-preguntas-sobre-ilustracion-vector-negocio_577008-23.jpg?w=826",
+    },
+];
