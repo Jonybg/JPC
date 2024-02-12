@@ -12,7 +12,7 @@ export const AppRoutes = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Hero />} />
-                <Route path="/products" element={<ProductsWidget />} />
+                <Route path="/productos" element={<ProductsWidget />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
             </Routes>

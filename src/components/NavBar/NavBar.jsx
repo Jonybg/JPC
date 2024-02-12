@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import logo from "../../imgs/logo.png";
 import "./navbar.css";
 import { IoMenu, IoCart } from "react-icons/io5";
@@ -14,14 +14,24 @@ export const Navbar = ({ quantity, id }) => {
   const { menu, toggleMenu } = useContext(MenuHamburguesa);
   const [cart, setCart] = useState(false);
   const [showThanksMessage, setShowThanksMessage] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [confirmationMessage, setConfirmationMessage] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (showThanksMessage) {
+      const timer = setTimeout(() => {
+        setShowThanksMessage(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [showThanksMessage]);
 
   const handleAddToCart = (title) => {
     dispatch(addToCart({ title }));
   };
 
   const handleRemoveFromCart = (title) => {
-
     dispatch(removeFromCart({ title }));
   };
 
@@ -30,9 +40,23 @@ export const Navbar = ({ quantity, id }) => {
   };
 
   const handleBuy = () => {
+    setShowConfirmationModal(true);
+    setConfirmationMessage("¿Está seguro de realizar la compra?");
+  };
+
+  const confirmBuy = () => {
     const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
     setShowThanksMessage(true);
     dispatch(clearCart());
+    setShowConfirmationModal(false);
+    setConfirmationMessage("");
+  };
+
+  const confirmClearCart = () => {
+    dispatch(clearCart());
+    setShowThanksMessage(true);
+    setShowConfirmationModal(false);
+    setConfirmationMessage("");
   };
 
   const calculateTotal = () => {
@@ -61,6 +85,11 @@ export const Navbar = ({ quantity, id }) => {
           <li>
             <NavLink style={({ isActive }) => ({ color: isActive ? "green" : "white" })} to="about">
               About us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink style={({ isActive }) => ({ color: isActive ? "green" : "white" })} to="productos">
+              Products
             </NavLink>
           </li>
           <li>
@@ -125,19 +154,45 @@ export const Navbar = ({ quantity, id }) => {
               <p>Total:</p>
               <span>{calculateTotal()} USD</span>
             </div>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded-full" onClick={handleBuy}>
+            <button
+              className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded-full ${cartItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+              onClick={handleBuy}
+              disabled={cartItems.length === 0}
+            >
               Comprar
             </button>
             <button
               onClick={() => {
-                dispatch(clearCart());
-                setShowThanksMessage(false);
+                setShowConfirmationModal(true);
+                setConfirmationMessage("¿Está seguro de vaciar el carrito?");
               }}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-14 rounded-full"
+              className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-14 rounded-full ${cartItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={cartItems.length === 0}
             >
               Vaciar
             </button>
-            {showThanksMessage && <p>¡Gracias por su compra!</p>}
+            {showThanksMessage &&
+              <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+                <div className="bg-white p-8 rounded-lg text-center">
+                  <p className="mb-4">{"Gracias por su compra!"}</p>
+                </div>
+              </div>
+            }
+            {showConfirmationModal && (
+              <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+                <div className="bg-white p-8 rounded-lg text-center">
+                  <p className="mb-4">{confirmationMessage}</p>
+                  <div className="flex justify-center">
+                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mr-4" onClick={confirmClearCart}>
+                      Sí
+                    </button>
+                    <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full" onClick={() => setShowConfirmationModal(false)}>
+                      No
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

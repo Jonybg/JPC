@@ -1,8 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../../redux/categories/categoriesSlice";
-
-
 export const Categories = ({ img, title, category }) => {
     const dispatch = useDispatch()
     const selectedCategory = useSelector(state => state.categories.selectedCategory)
