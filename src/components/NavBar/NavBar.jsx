@@ -15,7 +15,7 @@ export const Navbar = ({ quantity, id }) => {
   const [showThanksMessage, setShowThanksMessage] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [confirmationMessage, setConfirmationMessage] = useState("");
-  const [selectedProductToRemove, setSelectedProductToRemove] = useState(null); // Estado para almacenar el producto que se va a eliminar
+  const [selectedProductToRemove, setSelectedProductToRemove] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,31 +27,31 @@ export const Navbar = ({ quantity, id }) => {
     }
   }, [showThanksMessage]);
 
-  // Función para agregar un producto al carrito
+
   const handleAddToCart = (title) => {
     dispatch(addToCart({ title }));
   };
 
-  // Función para eliminar un producto del carrito
+
   const handleRemoveFromCart = (title) => {
     setShowConfirmationModal(true);
     setConfirmationMessage("¿Está seguro de eliminar este producto del carrito?");
     setSelectedProductToRemove(title);
   };
 
-  // Función para confirmar la compra
+
   const handleBuy = () => {
     setShowConfirmationModal(true);
     setConfirmationMessage("¿Está seguro de realizar la compra?");
   };
 
-  // Función para vaciar el carrito
+
   const handleClearCart = () => {
     setShowConfirmationModal(true);
     setConfirmationMessage("¿Está seguro de vaciar el carrito?");
   };
 
-  // Función para confirmar la compra y vaciar el carrito
+
   const confirmBuy = () => {
     setShowConfirmationModal(false);
     dispatch(clearCart());
@@ -59,7 +59,7 @@ export const Navbar = ({ quantity, id }) => {
     setConfirmationMessage("");
   };
 
-  // Función para confirmar y vaciar el carrito
+
   const confirmClearCart = () => {
     setShowConfirmationModal(false);
     dispatch(clearCart());
@@ -69,14 +69,14 @@ export const Navbar = ({ quantity, id }) => {
 
 
 
-  // Función para confirmar la eliminación de un producto del carrito
+
   const confirmRemoveProduct = () => {
     setShowConfirmationModal(false);
     dispatch(removeFromCart({ title: selectedProductToRemove }));
     setConfirmationMessage("");
   };
 
-  // Función para calcular el total del carrito
+
   const calculateTotal = () => {
     const total = cartItems.reduce((acc, item) => {
       const priceWithoutDollar = typeof item.price === 'string' ? parseFloat(item.price.replace('$', '')) : item.price;
@@ -86,7 +86,6 @@ export const Navbar = ({ quantity, id }) => {
     return total;
   };
 
-  // Función para calcular la cantidad total de elementos en el carrito
   const calculateTotalItems = () => {
     return cartItems.reduce((acc, item) => acc + item.quantity, 0);
   };
