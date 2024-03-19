@@ -1,17 +1,20 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../../redux/categories/categoriesSlice";
-export const Categories = ({ img, title, category }) => {
-    const dispatch = useDispatch()
-    const selectedCategory = useSelector(state => state.categories.selectedCategory)
 
-    const isSelected = category === selectedCategory;
+export const Categories = ({ img, title, category }) => {
+    const dispatch = useDispatch();
+    const selectedCategory = useSelector((state) => state.categories.selectedCategory);
+
+    const handleClick = () => {
+        dispatch(setCategory(category));
+    };
+
+    const isSelected = category === selectedCategory || (selectedCategory === null && category === "Todas");
+
     return (
         <div
-            onClick={() => {
-                dispatch(setCategory(category))
-
-            }}
+            onClick={handleClick}
             className={`${isSelected ? "bg-green-500" : "bg-slate-600"
                 } h-[200px] w-[170px] flex flex-col items-center justify-center rounded-xl gap-4 cursor-pointer`}
         >
@@ -24,4 +27,3 @@ export const Categories = ({ img, title, category }) => {
         </div>
     );
 };
-

@@ -11,11 +11,11 @@ import { removeItemFromCart } from "../../redux/cart/cart-utils";
 export const Navbar = ({ quantity, id }) => {
   const { cartItems, shippingCost } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const { menu, toggleMenu } = useContext(MenuHamburguesa);
-  const [cart, setCart] = useState(false);
+  const { menu, toggleMenu, toggleCart, cart } = useContext(MenuHamburguesa);
   const [showThanksMessage, setShowThanksMessage] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [confirmationMessage, setConfirmationMessage] = useState("");
+  const [selectedProductToRemove, setSelectedProductToRemove] = useState(null); // Estado para almacenar el producto que se va a eliminar
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,38 +27,56 @@ export const Navbar = ({ quantity, id }) => {
     }
   }, [showThanksMessage]);
 
+  // Función para agregar un producto al carrito
   const handleAddToCart = (title) => {
     dispatch(addToCart({ title }));
   };
 
+  // Función para eliminar un producto del carrito
   const handleRemoveFromCart = (title) => {
-    dispatch(removeFromCart({ title }));
+    setShowConfirmationModal(true);
+    setConfirmationMessage("¿Está seguro de eliminar este producto del carrito?");
+    setSelectedProductToRemove(title);
   };
 
-  const toggleCart = () => {
-    setCart(!cart);
-  };
-
+  // Función para confirmar la compra
   const handleBuy = () => {
     setShowConfirmationModal(true);
     setConfirmationMessage("¿Está seguro de realizar la compra?");
   };
 
+  // Función para vaciar el carrito
+  const handleClearCart = () => {
+    setShowConfirmationModal(true);
+    setConfirmationMessage("¿Está seguro de vaciar el carrito?");
+  };
+
+  // Función para confirmar la compra y vaciar el carrito
   const confirmBuy = () => {
-    const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    setShowThanksMessage(true);
-    dispatch(clearCart());
     setShowConfirmationModal(false);
+    dispatch(clearCart());
+    setShowThanksMessage(true);
     setConfirmationMessage("");
   };
 
+  // Función para confirmar y vaciar el carrito
   const confirmClearCart = () => {
-    dispatch(clearCart());
-    setShowThanksMessage(true);
     setShowConfirmationModal(false);
+    dispatch(clearCart());
+    setShowThanksMessage(false);
     setConfirmationMessage("");
   };
 
+
+
+  // Función para confirmar la eliminación de un producto del carrito
+  const confirmRemoveProduct = () => {
+    setShowConfirmationModal(false);
+    dispatch(removeFromCart({ title: selectedProductToRemove }));
+    setConfirmationMessage("");
+  };
+
+  // Función para calcular el total del carrito
   const calculateTotal = () => {
     const total = cartItems.reduce((acc, item) => {
       const priceWithoutDollar = typeof item.price === 'string' ? parseFloat(item.price.replace('$', '')) : item.price;
@@ -68,6 +86,7 @@ export const Navbar = ({ quantity, id }) => {
     return total;
   };
 
+  // Función para calcular la cantidad total de elementos en el carrito
   const calculateTotalItems = () => {
     return cartItems.reduce((acc, item) => acc + item.quantity, 0);
   };
@@ -126,76 +145,63 @@ export const Navbar = ({ quantity, id }) => {
                     <img className="w-[200px] h-[150px] rounded-lg" src={item.img} alt={item.title} />
                   </div>
                   <div className="text-center flex flex-col gap-3">
-                    <p className="text-white ">{item.title}</p>
-                    <div className="">
-                      <p className="text-orange-400 text-center text-xl ">{item.price}</p>
+                    <p className="text-white">{item.title}</p>
+                    <div>
+                      <p className="text-orange-400 text-center text-xl">{item.price}</p>
                     </div>
                     <div className="flex justify-center gap-4">
-                      <span
-                        onClick={() => handleRemoveFromCart(item.title)}
-                        className="bg-slate-600 w-7 h-7 rounded-lg cursor-pointer"
-                      >
-                        -
-                      </span>
+                      <span onClick={() => handleRemoveFromCart(item.title)} className="bg-slate-600 w-7 h-7 rounded-lg cursor-pointer">-</span>
                       <span>{item.quantity}</span>
-                      <span
-                        onClick={() => handleAddToCart(item.title)}
-                        className="bg-slate-600 w-7 h-7 rounded-lg cursor-pointer"
-                      >
-                        +
-                      </span>
+                      <span onClick={() => handleAddToCart(item.title)} className="bg-slate-600 w-7 h-7 rounded-lg cursor-pointer">+</span>
                     </div>
                   </div>
                 </div>
               ))}
-            </div>
-            <span className="w-full mt-20 border-solid border-[0.5px] border-black"></span>
-            <div className="flex gap-32 text-white">
-              <p>Total:</p>
-              <span>{calculateTotal()} USD</span>
-            </div>
-            <button
-              className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded-full ${cartItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
-              onClick={handleBuy}
-              disabled={cartItems.length === 0}
-            >
-              Comprar
-            </button>
-            <button
-              onClick={() => {
-                setShowConfirmationModal(true);
-                setConfirmationMessage("¿Está seguro de vaciar el carrito?");
-              }}
-              className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-14 rounded-full ${cartItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
-              disabled={cartItems.length === 0}
-            >
-              Vaciar
-            </button>
-            {showThanksMessage &&
-              <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-                <div className="bg-white p-8 rounded-lg text-center">
-                  <p className="mb-4">{"Gracias por su compra!"}</p>
-                </div>
+              <div className="w-full mt-20 border-solid border-[0.5px] border-black"></div>
+              <div className="flex gap-32 text-white">
+                <p>Total:</p>
+                <span>{calculateTotal()} USD</span>
               </div>
-            }
-            {showConfirmationModal && (
-              <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-                <div className="bg-white p-8 rounded-lg text-center">
-                  <p className="mb-4">{confirmationMessage}</p>
-                  <div className="flex justify-center">
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mr-4" onClick={confirmClearCart}>
-                      Sí
-                    </button>
-                    <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full" onClick={() => setShowConfirmationModal(false)}>
-                      No
-                    </button>
+              <button
+                onClick={handleBuy}
+                className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 rounded-full ${cartItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                disabled={cartItems.length === 0}
+              >
+                Comprar
+              </button>
+              <button
+                onClick={handleClearCart}
+                className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-14 rounded-full ${cartItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                disabled={cartItems.length === 0}
+              >
+                Vaciar
+              </button>
+              {showThanksMessage &&
+                <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+                  <div className="bg-white p-8 rounded-lg text-center">
+                    <p className="mb-4">¡Gracias por su compra!</p>
                   </div>
                 </div>
-              </div>
-            )}
+              }
+              {showConfirmationModal && (
+                <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+                  <div className="bg-white p-8 rounded-lg text-center">
+                    <p className="mb-4">{confirmationMessage}</p>
+                    <div className="flex justify-center">
+                      <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mr-4" onClick={confirmationMessage === '¿Está seguro de realizar la compra?' ? confirmBuy : confirmationMessage === '¿Está seguro de vaciar el carrito?' ? confirmClearCart : confirmRemoveProduct}>
+                        Sí
+                      </button>
+                      <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full" onClick={() => setShowConfirmationModal(false)}>
+                        No
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}

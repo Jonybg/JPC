@@ -8,7 +8,7 @@ export const Hero = () => {
 
     return (
         <>
-            <section className="xl:h-screen mb-auto h-1/4">
+            <section className="xl:h-screen mb-auto h-1/4 ">
                 <div className="hero-pattern bg-cover bg-blend-multiply bg-stone-600 bg-opacity-90 xl:h-full h-3/4 flex justify-center items-center">
                     <div className="mx-16 text-center">
                         <div className="flex flex-col gap-6">
@@ -22,7 +22,7 @@ export const Hero = () => {
                                     "¡Rápido, confiable y profesional! JPC salvó mi computadora." - Cliente satisfecho
                                 </p>
                             </div>
-                            <button onClick={() => navigate("contact")} className="bg-green-500 hover:bg-green-700 text-white font-bold px-10 py-4 rounded-full mt-8">Contactate con nosotros!</button>
+                            <button onClick={() => navigate("contact")} className=" m-3 bg-green-500 hover:bg-green-700 text-white font-bold px-10 py-4 rounded-full mt-8">Contactate con nosotros!</button>
                         </div>
                     </div>
                 </div>

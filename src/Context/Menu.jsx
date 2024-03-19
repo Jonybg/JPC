@@ -1,23 +1,24 @@
-import React from "react";
-import { useState, createContext } from "react";
+import React, { useState, createContext } from "react";
 
-
-export const MenuHamburguesa = createContext()
+export const MenuHamburguesa = createContext();
 
 export const HamburguesaMenu = ({ children }) => {
-
-    const [menu, setmenu] = useState(false)
-
+    const [menu, setMenu] = useState(false);
+    const [cart, setCart] = useState(false);
 
     const toggleMenu = () => {
-        setmenu(!menu)
+        setMenu(!menu);
+        setCart(false);
+    };
 
-    }
+    const toggleCart = () => {
+        setCart(!cart);
+        setMenu(false);
+    };
 
     return (
-        <MenuHamburguesa.Provider value={{ menu, toggleMenu }} >
+        <MenuHamburguesa.Provider value={{ menu, toggleMenu, toggleCart, cart }}>
             {children}
         </MenuHamburguesa.Provider>
-    )
-
-}
+    );
+};

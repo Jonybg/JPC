@@ -1,9 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { Products, TotalProducts } from "../../data/Products"
+import { createSlice } from '@reduxjs/toolkit';
+import { Products, TotalProducts } from "../../data/Products";
+
 const INITIAL_STATE = {
     products: Products,
     totalProducts: TotalProducts
-}
+};
 
 export const productsSlice = createSlice({
     name: 'products',
@@ -12,12 +13,12 @@ export const productsSlice = createSlice({
         getProducts: state => {
             return state;
         },
-        getFirstProduct: (state) => {
+        getFirstProduct: state => {
             return state.products[0];
         }
     }
-})
+});
 
-export const { getProducts } = productsSlice.actions
+export const { getProducts, getFirstProduct } = productsSlice.actions;
 
-export default productsSlice.reducer
+export default productsSlice.reducer;

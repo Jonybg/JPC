@@ -3,7 +3,7 @@ import { Categories } from "../../data/Categories";
 
 const INITIAL_STATE = {
     categories: Categories,
-    selectedCategory: null,
+    selectedCategory: "Todas",
 }
 
 export const categoriesSlice = createSlice({
